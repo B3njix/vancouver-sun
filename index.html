@@ -1,3 +1,6 @@
+
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +53,59 @@
         }
         #endChatButton:hover { background-color: #c9302c; }
         #endChatButton:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media screen and (max-width: 768px) {
+            /* Header adjustments */
+            .logo { font-size: 24px; letter-spacing: 1px; }
+            .tagline { font-size: 9px; }
+            
+            /* Navigation - stack vertically */
+            nav { padding-top: 10px; }
+            nav a { 
+                display: inline-block;
+                margin-right: 15px; 
+                margin-bottom: 8px;
+                font-size: 13px; 
+            }
+            
+            /* Content adjustments */
+            .main-content { 
+                padding: 25px 20px; 
+                margin-top: 15px;
+                border-left: 2px solid #0052a3;
+            }
+            
+            h1 { font-size: 28px; }
+            p { font-size: 16px; }
+            
+            .article-meta { font-size: 12px; }
+            .more-stories h3 { font-size: 20px; }
+            .more-stories li { font-size: 15px; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo { font-size: 20px; }
+            .tagline { font-size: 8px; }
+            
+            nav a { 
+                margin-right: 10px;
+                font-size: 12px;
+            }
+            
+            .main-content { padding: 20px 15px; }
+            h1 { font-size: 24px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+            p { font-size: 15px; }
+            
+            #endChatButton {
+                bottom: 20px;
+                right: 15px;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
     </style>
 
     <script>
@@ -67,9 +123,9 @@
                 </div>
             </div>
             <nav>
-                <a href="vancouver-sun-index.html">Home</a>
-                <a href="vancouver-sun-faqs.html">FAQs</a>
-                <a href="vancouver-sun-subscription.html">Subscription</a>
+                <a href="index.html">Home</a>
+                <a href="faqs.html">FAQs</a>
+                <a href="subscription.html">Subscription</a>
             </nav>
         </div>
     </header>
