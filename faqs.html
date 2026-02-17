@@ -125,22 +125,28 @@
         #endChatButton {
             display: none;
             position: fixed;
-            bottom: 35px;
-            right: 30px;
-            z-index: 999999;
-            padding: 10px 20px;
-            background-color: #d9534f;
+            bottom: 588px;
+            right: 55px;
+            /* Position in the blue header area */
+            z-index: 2147483647;
+            padding: 4px 12px;
+            background-color: #607d8b;
+            /* Slate blue to match widget header */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             cursor: pointer;
             font-family: 'Arial', sans-serif;
+            font-size: 10px;
             font-weight: bold;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
         }
 
         #endChatButton:hover {
-            background-color: #c9302c;
+            background-color: #455a64;
+            transform: translateY(-1px);
         }
 
         #endChatButton:disabled {
