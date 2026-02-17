@@ -188,9 +188,8 @@
         /* --- RESPONSIVE DESIGN --- */
         @supports (-webkit-touch-callout: none) {
 
-            textarea,
             input,
-            select {
+            textarea {
                 font-size: 16px !important;
             }
         }
@@ -432,7 +431,7 @@
                 if (!document.getElementById('ios-zoom-fix')) {
                     let zoomFix = document.createElement('style');
                     zoomFix.id = 'ios-zoom-fix';
-                    zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { textarea, input, select, [contenteditable] { font-size: 16px !important; } }`;
+                    zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { input, textarea { font-size: 16px !important; } }`;
                     document.head.appendChild(zoomFix);
                 }
 
