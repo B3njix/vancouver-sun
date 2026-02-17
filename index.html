@@ -186,6 +186,15 @@
         }
 
         /* --- RESPONSIVE DESIGN --- */
+        @supports (-webkit-touch-callout: none) {
+
+            textarea,
+            input,
+            select {
+                font-size: 16px !important;
+            }
+        }
+
         @media screen and (max-width: 768px) {
 
             /* Header adjustments */
@@ -420,10 +429,12 @@
                 }).catch(err => console.error("Failed to update user properties:", err));
 
                 // Inject CSS to prevent iOS zoom on input focus
-                let zoomFix = document.createElement('style');
-                zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { textarea, input { font-size: 16px !important; } }`;
-
-                document.getElementById('web-messenger-container').appendChild(zoomFix);
+                if (!document.getElementById('ios-zoom-fix')) {
+                    let zoomFix = document.createElement('style');
+                    zoomFix.id = 'ios-zoom-fix';
+                    zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { textarea, input, select, [contenteditable] { font-size: 16px !important; } }`;
+                    document.head.appendChild(zoomFix);
+                }
 
                 // Show the "End Chat" button when the widget is open and hide it when closed
                 SerenovaWebChat.on('widget:opened', () => endChatBtn.style.display = 'block');
