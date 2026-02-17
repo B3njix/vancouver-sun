@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vancouver Sun - Subscription</title>
+    <title>Vancouver Sun - Home</title>
 
     <meta name="chat-context-publication" content="Vancouver Sun">
-    <meta name="chat-context-page" content="Subscription">
+    <meta name="chat-context-page" content="Home"> 
 
     <style>
         /* --- GLOBAL STYLES (Newspaper Look) --- */
@@ -27,29 +27,15 @@
         /* CONTENT LAYOUT */
         .main-content { background: #fff; margin-top: 25px; padding: 50px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); min-height: 500px; border-left: 3px solid #0052a3; }
         h1 { font-size: 38px; margin-bottom: 12px; color: #003d7a; font-weight: bold; line-height: 1.2; }
-        h2 { font-size: 28px; color: #003d7a; margin-top: 40px; margin-bottom: 15px; }
-        h3 { font-size: 22px; color: #003d7a; margin-top: 25px; margin-bottom: 10px; }
+        .article-meta { color: #666; font-size: 13px; font-family: 'Arial', sans-serif; margin-bottom: 25px; border-bottom: 2px solid #ffa500; padding-bottom: 12px; }
         p { line-height: 1.8; font-size: 17px; margin-bottom: 22px; color: #2a2a2a; }
-        .intro-text { font-size: 19px; color: #0052a3; font-style: italic; margin-bottom: 30px; padding: 20px; background-color: #f0f7ff; border-left: 4px solid #ffa500; }
 
-        /* SUBSCRIPTION PLANS */
-        .plans-container { display: flex; gap: 25px; margin: 40px 0; flex-wrap: wrap; }
-        .plan-card { flex: 1; min-width: 280px; background: linear-gradient(to bottom, #f9f9f9, #fff); border: 2px solid #0052a3; border-radius: 8px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .plan-card h3 { margin-top: 0; color: #003d7a; border-bottom: 3px solid #ffa500; padding-bottom: 10px; }
-        .plan-price { font-size: 32px; font-weight: bold; color: #0052a3; margin: 20px 0; }
-        .plan-price span { font-size: 16px; color: #666; font-weight: normal; }
-        .plan-features { list-style: none; padding: 0; margin: 20px 0; }
-        .plan-features li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; }
-        .plan-features li:before { content: "✓ "; color: #ffa500; font-weight: bold; margin-right: 8px; }
-        .subscribe-btn { display: block; width: 100%; padding: 15px; background-color: #0052a3; color: white; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; margin-top: 20px; transition: background-color 0.3s ease; }
-        .subscribe-btn:hover { background-color: #003d7a; }
-
-        /* BENEFITS SECTION */
-        .benefits { background-color: #f0f7ff; padding: 30px; margin: 40px 0; border-radius: 8px; border: 2px solid #0052a3; }
-        .benefits h2 { margin-top: 0; }
-        .benefits ul { list-style: none; padding: 0; }
-        .benefits li { padding: 12px 0; font-size: 16px; }
-        .benefits li:before { content: "▸ "; color: #ffa500; font-weight: bold; margin-right: 10px; }
+        /* STORY LIST */
+        .more-stories { margin-top: 40px; padding-top: 30px; border-top: 3px solid #0052a3; }
+        .more-stories h3 { color: #003d7a; font-size: 24px; margin-bottom: 20px; }
+        .more-stories ul { list-style: none; padding: 0; }
+        .more-stories li { padding: 12px 0; border-bottom: 1px solid #ddd; font-size: 16px; }
+        .more-stories li:before { content: "▸ "; color: #ffa500; font-weight: bold; margin-right: 8px; }
 
         /* FOOTER */
         footer { background: linear-gradient(to top, #001f3f, #003d7a); color: #aaa; padding: 45px 0; margin-top: 50px; text-align: center; font-family: 'Arial', sans-serif; font-size: 13px; }
@@ -64,10 +50,63 @@
         }
         #endChatButton:hover { background-color: #c9302c; }
         #endChatButton:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media screen and (max-width: 768px) {
+            /* Header adjustments */
+            .logo { font-size: 24px; letter-spacing: 1px; }
+            .tagline { font-size: 9px; }
+            
+            /* Navigation - stack vertically */
+            nav { padding-top: 10px; }
+            nav a { 
+                display: inline-block;
+                margin-right: 15px; 
+                margin-bottom: 8px;
+                font-size: 13px; 
+            }
+            
+            /* Content adjustments */
+            .main-content { 
+                padding: 25px 20px; 
+                margin-top: 15px;
+                border-left: 2px solid #0052a3;
+            }
+            
+            h1 { font-size: 28px; }
+            p { font-size: 16px; }
+            
+            .article-meta { font-size: 12px; }
+            .more-stories h3 { font-size: 20px; }
+            .more-stories li { font-size: 15px; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo { font-size: 20px; }
+            .tagline { font-size: 8px; }
+            
+            nav a { 
+                margin-right: 10px;
+                font-size: 12px;
+            }
+            
+            .main-content { padding: 20px 15px; }
+            h1 { font-size: 24px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+            p { font-size: 15px; }
+            
+            #endChatButton {
+                bottom: 20px;
+                right: 15px;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
     </style>
 
     <script>
-        !function (o, i, s, c) { var a, p, h, u = [], l = []; function e() { var t = "You must provide a supported major version."; try { if (!c) throw new Error(t); var e, n = "https://sdk.cxengage.net/webchat/2.2.3/", r = "serenovawebchat"; if ((e = "string" == typeof this.response ? JSON.parse(this.response) : this.response).url) { var o = i.getElementsByTagName("script")[0], s = i.createElement("script"); s.async = !0; var a = c.match(/([0-9]+)\.?([0-9]+)?\.?([0-9]+)?/), p = a && a[1]; if (a && a[3]) s.src = n + r + "." + c + ".min.js"; else { if (!(1 <= p && e["v" + p])) throw new Error(t); s.src = e["v" + p] } o.parentNode.insertBefore(s, o) } } catch (e) { e.message === t && console.error(e) } } o[s] = { init: function () { a = arguments; var t = { then: function (e) { return l.push({ type: "t", next: e }), t }, catch: function (e) { return l.push({ type: "c", next: e }), t } }; return t }, on: function () { u.push(arguments) }, render: function () { p = arguments }, destroy: function () { h = arguments } }, o.__onWebMessengerHostReady__ = function (e) { if (delete o.__onWebMessengerHostReady__, o[s] = e, a) for (var t = e.init.apply(e, a), n = 0; n < l.length; n++) { var r = l[n]; t = "t" === r.type ? t.then(r.next) : t.catch(r.next) } p && e.render.apply(e, p), h && e.destroy.apply(e, h); for (n = 0; n < u.length; n++)e.on.apply(e, u[n]) }; var t = new XMLHttpRequest; t.addEventListener("load", e), t.open("GET", "https://sdk.cxengage.net/webchat/2.2.3/loader.json", !0), t.responseType = "json", t.send() }(window, document, "SerenovaWebChat", "2");
+        !function (o, i, s, c) { var a, p, h, u = [], l = []; function e() { var t = "You must provide a supported major version."; try { if (!c) throw new Error(t); var e, n = "https://sdk.cxengage.net/webchat/2.6.11/", r = "serenovawebchat"; if ((e = "string" == typeof this.response ? JSON.parse(this.response) : this.response).url) { var o = i.getElementsByTagName("script")[0], s = i.createElement("script"); s.async = !0; var a = c.match(/([0-9]+)\.?([0-9]+)?\.?([0-9]+)?/), p = a && a[1]; if (a && a[3]) s.src = n + r + "." + c + ".min.js"; else { if (!(1 <= p && e["v" + p])) throw new Error(t); s.src = e["v" + p] } o.parentNode.insertBefore(s, o) } } catch (e) { e.message === t && console.error(e) } } o[s] = { init: function () { a = arguments; var t = { then: function (e) { return l.push({ type: "t", next: e }), t }, catch: function (e) { return l.push({ type: "c", next: e }), t } }; return t }, on: function () { u.push(arguments) }, render: function () { p = arguments }, destroy: function () { h = arguments } }, o.__onWebMessengerHostReady__ = function (e) { if (delete o.__onWebMessengerHostReady__, o[s] = e, a) for (var t = e.init.apply(e, a), n = 0; n < l.length; n++) { var r = l[n]; t = "t" === r.type ? t.then(r.next) : t.catch(r.next) } p && e.render.apply(e, p), h && e.destroy.apply(e, h); for (n = 0; n < u.length; n++)e.on.apply(e, u[n]) }; var t = new XMLHttpRequest; t.addEventListener("load", e), t.open("GET", "https://sdk.cxengage.net/webchat/2.6.11/loader.json", !0), t.responseType = "json", t.send() }(window, document, "SerenovaWebChat", "2");
     </script>
 </head>
 <body>
@@ -81,88 +120,32 @@
                 </div>
             </div>
             <nav>
-                <a href="vancouver-sun-index.html">Home</a>
-                <a href="vancouver-sun-faqs.html">FAQs</a>
-                <a href="vancouver-sun-subscription.html">Subscription</a>
+                <a href="index.html">Home</a>
+                <a href="faqs.html">FAQs</a>
+                <a href="subscription.html">Subscription</a>
             </nav>
         </div>
     </header>
 
     <div class="container main-content">
-        <h1>Subscribe to the Vancouver Sun</h1>
+        <h1>Metro Vancouver Transit Expansion Gets Provincial Funding</h1>
+        <div class="article-meta">By <strong>Sarah Chen</strong> | Published Feb 05, 2026 | Metro News</div>
         
-        <div class="intro-text">
-            Stay informed with award-winning journalism covering Vancouver, British Columbia, and beyond. Choose the subscription plan that's right for you.
-        </div>
+        <p>VANCOUVER, BC — The provincial government announced today a major funding commitment for the expansion of Metro Vancouver's rapid transit network. The $2.3 billion investment will accelerate the development of new SkyTrain lines connecting Surrey and Langley.</p>
+        
+        <p>"This is a transformative moment for public transportation in our region," said Transportation Minister David Williams. "These new lines will reduce congestion, lower emissions, and connect communities across the Lower Mainland."</p>
+        
+        <p>Construction is expected to begin in early 2027, with the first phase scheduled for completion by 2031. The expansion is projected to serve an additional 100,000 daily commuters once fully operational.</p>
 
-        <h2>Subscription Plans</h2>
-
-        <div class="plans-container">
-            <div class="plan-card">
-                <h3>Digital Access</h3>
-                <div class="plan-price">$9.99<span>/month</span></div>
-                <ul class="plan-features">
-                    <li>Unlimited access to vancouversun.com</li>
-                    <li>Daily e-Edition replica</li>
-                    <li>Breaking news alerts</li>
-                    <li>Access on all devices</li>
-                    <li>Subscriber-exclusive newsletters</li>
-                    <li>Ad-light experience</li>
-                </ul>
-                <a href="#" class="subscribe-btn">Subscribe Now</a>
-            </div>
-
-            <div class="plan-card">
-                <h3>Print + Digital</h3>
-                <div class="plan-price">$24.99<span>/month</span></div>
-                <ul class="plan-features">
-                    <li>7-day home delivery</li>
-                    <li>All Digital Access benefits</li>
-                    <li>Weekend magazines included</li>
-                    <li>Exclusive subscriber events</li>
-                    <li>Premium content library</li>
-                    <li>Crossword puzzles & games</li>
-                </ul>
-                <a href="#" class="subscribe-btn">Subscribe Now</a>
-            </div>
-
-            <div class="plan-card">
-                <h3>Weekend Print + Digital</h3>
-                <div class="plan-price">$14.99<span>/month</span></div>
-                <ul class="plan-features">
-                    <li>Saturday & Sunday delivery</li>
-                    <li>All Digital Access benefits</li>
-                    <li>Weekend magazines & sections</li>
-                    <li>E-Edition access</li>
-                    <li>Breaking news alerts</li>
-                    <li>Subscriber newsletters</li>
-                </ul>
-                <a href="#" class="subscribe-btn">Subscribe Now</a>
-            </div>
-        </div>
-
-        <div class="benefits">
-            <h2>Why Subscribe to the Vancouver Sun?</h2>
+        <div class="more-stories">
+            <h3>More Top Stories</h3>
             <ul>
-                <li><strong>Local Expertise:</strong> In-depth coverage of Vancouver, Metro Vancouver, and British Columbia news that matters to you</li>
-                <li><strong>Award-Winning Journalism:</strong> Investigative reporting and analysis from BC's most trusted news source</li>
-                <li><strong>Breaking News:</strong> Be the first to know with real-time updates on developing stories</li>
-                <li><strong>Sports Coverage:</strong> Comprehensive reporting on the Canucks, BC Lions, Whitecaps, and local teams</li>
-                <li><strong>Business Insights:</strong> Expert analysis on the BC economy, real estate, and market trends</li>
-                <li><strong>Arts & Entertainment:</strong> Your guide to Vancouver's vibrant cultural scene</li>
-                <li><strong>Exclusive Content:</strong> Access to subscriber-only features, columns, and special investigations</li>
-                <li><strong>Community Connection:</strong> Letters, opinion pieces, and community voices from across the region</li>
+                <li>Vancouver Canucks extend winning streak to seven games</li>
+                <li>Heavy snowfall warning issued for North Shore mountains</li>
+                <li>Tech sector hiring boom continues in downtown Vancouver</li>
+                <li>BC housing market shows signs of stabilization</li>
             </ul>
         </div>
-
-        <h2>Special Offers</h2>
-        <p>New subscribers can enjoy their first month for just <strong>$1</strong> on any digital plan. Students and educators receive 50% off regular subscription rates with valid ID. Contact our subscription team at 1-800-663-2662 for more information about group rates and corporate subscriptions.</p>
-
-        <h3>Gift Subscriptions</h3>
-        <p>Give the gift of quality journalism. Vancouver Sun gift subscriptions are available for 3, 6, or 12 months and make perfect gifts for family, friends, or business associates. Each gift subscription includes a personalized announcement card.</p>
-
-        <h3>Customer Service</h3>
-        <p>Questions about your subscription? Our customer service team is available Monday through Friday, 7:00 AM to 5:00 PM PST. Call us at 1-800-663-2662 or email subscriptions@vancouversun.com. Manage your account online anytime at vancouversun.com/myaccount.</p>
     </div>
 
     <footer>
@@ -177,7 +160,7 @@
     <script>
         // Global Configuration
         const CHAT_CONFIG = {
-            integrationId: '695ebfa206a2d040ec8f035a',
+            integrationId: '6966665f56c845c31a432939',
             storageType: 'sessionStorage'
         };
 
@@ -253,7 +236,7 @@
                         sourceUrl: context.url
                     }
                 }).catch(err => console.error("Failed to update user properties:", err));
-                
+
                 // Inject CSS to prevent iOS zoom on input focus
                 let zoomFix = document.createElement('style');
                 zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { textarea, input { font-size: 16px !important; } }`;
