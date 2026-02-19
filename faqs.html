@@ -397,13 +397,24 @@
                     }
                 }).catch(err => console.error("Failed to update user properties:", err));
 
-                // Inject CSS to prevent iOS zoom on input focus
-                if (!document.getElementById('ios-zoom-fix')) {
-                    let zoomFix = document.createElement('style');
-                    zoomFix.id = 'ios-zoom-fix';
-                    zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { input, textarea { font-size: 16px !important; } }`;
-                    document.head.appendChild(zoomFix);
-                }
+                // Inject CSS into the chat widget iframe to prevent iOS zoom on input focus
+                const injectIframeStyles = () => {
+                    const messengerIframe = document.getElementById('web-messenger-container');
+                    if (messengerIframe) {
+                        const iframeDoc = messengerIframe.contentDocument || messengerIframe.contentWindow.document;
+                        if (iframeDoc && !iframeDoc.getElementById('ios-zoom-fix')) {
+                            let zoomFix = iframeDoc.createElement('style');
+                            zoomFix.id = 'ios-zoom-fix';
+                            zoomFix.innerHTML = `@supports (-webkit-touch-callout: none) { input, textarea { font-size: 16px !important; } }`;
+                            iframeDoc.head.appendChild(zoomFix);
+                            console.log("[Chat Fix] iOS zoom fix injected into iframe.");
+                        }
+                    }
+                };
+
+                // Apply fix when widget is opened or loaded
+                SerenovaWebChat.on('widget:opened', injectIframeStyles);
+                injectIframeStyles(); // Try immediately as well
 
                 // Show the "End Chat" button when the widget is open and hide it when closed
                 SerenovaWebChat.on('widget:opened', () => endChatBtn.style.display = 'block');
