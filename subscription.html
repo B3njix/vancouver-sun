@@ -579,10 +579,37 @@
                     ],
                 },
                 delegate: {
-                    beforeDisplay: (message) => {
+                    beforeDisplay: function processChatEvent(message) {
+                        if (!message) {
+                            return null;
+                        }
+
+                        if (message?.metadata?.type === "disconnect-conversation") {
+                            return null;
+                        }
+
+                        if (message?.metadata?.displayMessage === false) {
+                            return null;
+                        }
+
+                        const isHiddenSystemEvent = message?.metadata?.type === "system" &&
+                            message?.metadata?.from === "CxEngageHiddenMessage";
+                        if (isHiddenSystemEvent) {
+                            return null;
+                        }
+
+                        if (message?.role === "business" && message?.metadata) {
+                            if (message.metadata.type === "agent" && message.metadata.firstName) {
+                                message.displayName = message.metadata.firstName;
+                            } else if (message.metadata.from) {
+                                message.displayName = message.metadata.from;
+                            }
+                        }
+
                         if (message?.metadata?.conversationId) {
                             activeConversationId = message.metadata.conversationId;
                         }
+
                         return message;
                     }
                 }
